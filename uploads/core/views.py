@@ -12,7 +12,7 @@ import numpy
 import sys
 import xlsxwriter
 from xlsxwriter.workbook import Workbook
-from io import StringIO
+from io import BytesIO
 
 
 def home(request):
@@ -310,7 +310,7 @@ def process_file(file_handle):
     columns = [data["Sample_ID"], norm_WP_SiO2, data["Density_g-per-cm3"], data["Density_g-per-L"], norm_WP_H2O, data["T"], data["P"]]
     output = pandas.DataFrame(index, columns)
 
-    excel_file = StringIO()
+    excel_file = BytesIO()
 
     xlwriter = pandas.ExcelWriter(excel_file, engine='xlsxwriter')
 
