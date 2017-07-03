@@ -30,23 +30,20 @@ def simple_upload(request):
         #call to python script
         xlsx = process_file(myfile.name)
         return xlsx
-    return render(request, 'core/simple_upload.html')
-
-# def test_script(uploaded_file_url):
-#     return render(uploaded_file_url, 'core/test_script.html')
+    return render(request, 'core/home.html')
 
 
-def model_form_upload(request):
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = DocumentForm()
-    return render(request, 'core/model_form_upload.html', {
-        'form': form
-    })
+# def model_form_upload(request):
+#     if request.method == 'POST':
+#         form = DocumentForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')
+#     else:
+#         form = DocumentForm()
+#     return render(request, 'core/model_form_upload.html', {
+#         'form': form
+#     })
 
 
 def process_file(file_handle):
