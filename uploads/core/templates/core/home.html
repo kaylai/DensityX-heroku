@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-  <ul>
-    <li>
-      <a href="{% url 'simple_upload' %}">Simple Upload</a>
-    </li>
-  </ul>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    <p>Also print another thing if a file is uploaded</p>
+  {% endif %}
+
 {% endblock %}
