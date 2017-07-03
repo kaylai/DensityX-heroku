@@ -32,8 +32,8 @@ def simple_upload(request):
         return xlsx
     return render(request, 'core/simple_upload.html')
 
-def test_script(uploaded_file_url):
-    return render(uploaded_file_url, 'core/test_script.html')
+# def test_script(uploaded_file_url):
+#     return render(uploaded_file_url, 'core/test_script.html')
 
 
 def model_form_upload(request):
@@ -63,12 +63,12 @@ def process_file(file_handle):
     else:    
         proceed = raw_input("WARNING: Did not find a column SiO2. Proceed anyways? (y/n)")
         if proceed is "n":
-            print "Quitting program."
+            print("Quitting program.")
             sys.exit()
         if proceed is "y":
             data['SiO2'] = 0
         else:
-            print "Error."
+            print("Error.")
             sys.exit()
 
 
