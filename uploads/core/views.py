@@ -12,7 +12,7 @@ import numpy
 import sys
 import xlsxwriter
 from xlsxwriter.workbook import Workbook
-form io import StringIO
+from io import StringIO
 
 
 def home(request):
