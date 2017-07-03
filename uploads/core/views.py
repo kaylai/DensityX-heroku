@@ -54,22 +54,22 @@ def process_file(file_handle):
 
 
     #Check to make sure all necessary columns are present in the imported data. If they are not, add them.
-    if 'SiO2' in data.columns:
-        pass
-    elif 'sio2' in data.columns:
-        data = data.rename(columns = {'sio2':'SiO2'})
-    elif 'Si02' in data.columns:
-        data = data.rename(columns = {'Si02':'SiO2'})
-    else:    
-        proceed = raw_input("WARNING: Did not find a column SiO2. Proceed anyways? (y/n)")
-        if proceed is "n":
-            print("Quitting program.")
-            sys.exit()
-        if proceed is "y":
-            data['SiO2'] = 0
-        else:
-            print("Error.")
-            sys.exit()
+    # if 'SiO2' in data.columns:
+    #     pass
+    # elif 'sio2' in data.columns:
+    #     data = data.rename(columns = {'sio2':'SiO2'})
+    # elif 'Si02' in data.columns:
+    #     data = data.rename(columns = {'Si02':'SiO2'})
+    # else:    
+    #     proceed = raw_input("WARNING: Did not find a column SiO2. Proceed anyways? (y/n)")
+    #     if proceed is "n":
+    #         print("Quitting program.")
+    #         sys.exit()
+    #     if proceed is "y":
+    #         data['SiO2'] = 0
+    #     else:
+    #         print("Error.")
+    #         sys.exit()
 
 
     data = data.fillna(value=0) #Replace any empty cells (which read in as NaN) with 0, otherwise Pandas will break
