@@ -315,6 +315,7 @@ def process_file(file_handle):
     xlwriter = pandas.ExcelWriter(excel_file, engine='xlsxwriter')
 
     output.to_excel(xlwriter, sheet_name='Density Data')
+    data.to_excel(writer, sheet_name='All Data') #Convert the dataframe to an XlsxWriter Excel object
     xlwriter.save()
     xlwriter.close()
 
