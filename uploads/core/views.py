@@ -176,7 +176,7 @@ def process_file(file_handle):
 
 
     #save normalized wt% values
-    norm_WP_SiO2    = data["SiO2"]
+    norm_WP_SiO2    = data['SiO2']
     norm_WP_TiO2    = data["TiO2"]
     norm_WP_Al2O3   = data["Al2O3"]
     norm_WP_Fe2O3   = data["Fe2O3"]
@@ -307,7 +307,7 @@ def process_file(file_handle):
 
     #Make a sheet with only the important output data
     index = data["Sample_ID"]
-    columns = [data["Sample_ID"], data["SiO2"], data["Density_g-per-cm3"], data["Density_g-per-L"], norm_WP_H2O, data["T"], data["P"]]
+    columns = [data["Sample_ID"], norm_WP_SiO2, data["Density_g-per-cm3"], data["Density_g-per-L"], norm_WP_H2O, data["T"], data["P"]]
     output = pandas.DataFrame(index, columns)
 
     excel_file = BytesIO()
