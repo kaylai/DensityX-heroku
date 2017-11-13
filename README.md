@@ -1,3 +1,71 @@
+# Density-X Heroku deployment
+
+This app was created on top of python-getting-started. The readme for the original infrastructure is below.
+
+## Test on your local.
+
+Create a virtual environment to test the app on your local machine.
+
+```sh
+$ conda env export -n venv
+$ source activate venv
+$ pip install -r requirements.txt
+```
+
+Then run the thing...
+```sh
+$ python manage.py collect static
+```
+(answer yes)
+
+```sh
+$ heroku local web
+```
+
+Now access the local deployment at http://localhost:5000
+
+If you are having issues getting this to run, your 5000 port may be busy. Kill all processes on that port with:
+```sh
+$ kill `lsof -i :5000`
+```
+
+##Push changes and deploy on Heroku.
+```sh
+$ git add .
+$ git commit -m "commit message"
+$ git push heroku master
+$ heroku open
+```
+
+Done forget to also push to github (here; origin master) where you should definitely also be saving these files:
+```sh
+$ git add .
+$ git commit -m "commit message"
+$ git push origin master
+```
+
+##The file structure
+The file /uploads/core/view.py is where your python code (the actual code being deployed, in this case DensityX.py) lives.
+
+The file /uploads/templates/base.html is the base html file that is essentially your index.html file. All other html files extend base.
+
+The file /uploads/core/templates/core/home.html is where the stuff on your index page is defined. For example, the upload button in DensityX is defined here.
+
+##Some files you'll need
+Use python-getting-started from heroku for an example of a working setup with all required files (readme for original is below)
+
+requirements.txt file - all dependencies and versions go here. To get version: run python, import module, type:
+```sh
+$ print module.__version__
+```
+
+urls.py - list of all the "pages" on the web interface
+
+view.py - where the actual python code gets called and executed. The script to run must be wrapped as a function like:
+```sh
+def my_python_script(some_thing)
+```
+
 # python-getting-started
 
 A barebones Python app, which can easily be deployed to Heroku.
