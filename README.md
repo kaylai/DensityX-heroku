@@ -14,7 +14,7 @@ $ pip install -r requirements.txt
 
 Then run the thing...
 ```sh
-$ python manage.py collect static
+$ python manage.py collectstatic
 ```
 (answer yes)
 
