@@ -110,3 +110,24 @@ or
 For more information about using Python on Heroku, see these Dev Center articles:
 
 - [Python on Heroku](https://devcenter.heroku.com/categories/python)
+
+## David's setup notes (macOS)
+
+###In local Machine
+```
+git clone https://github.com/kaylai/DensityX-heroku.git
+cd DensityX-heroku
+brew install postgresql
+conda create virtualenv -n venv
+source activate venv
+[Switch to Venv Machine]
+heroku local web
+```
+
+###In Venv Machine
+```
+pip install -r requirements.txt
+python manage.py collectstatic
+yes
+[Switch to local machine]
+```
