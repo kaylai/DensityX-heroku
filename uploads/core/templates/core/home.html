@@ -8,14 +8,45 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
+            <h1>DensityX Online Interface</h1>
+            DensityX is a python code to calculate the density of hydrous magmatic liquids from 323-1,727 &deg;C and up to 30 kbar. This code and the references used to create it can be found in the companion paper: <a href="#">Iacovino et al (in prep)</a> <em>*Note this will link to the paper once published</em>
+            <p>&nbsp;</p>
+            <P>For now, <b>READ THE DOCS</b> to learn how to use this tool.</p>
             <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="form-group">
-                    <label for="fileInput">Upload File</label>
-                    <input type="file" class="form-control" id="fileInput" aria-describedby="fileHelp">
-                    <small id="fileHelp" class="form-text text-muted">Upload your .xlsx valid file here.</small>
+                    <label for="fileInput"><h1>Upload File</h2></label>
+                    <input type="file" class="form-control" id="fileInput" aria-describedby="fileHelp" name="myfile">
+                    <small id="fileHelp" class="form-text text-muted">Upload your valid .xlsx file here.</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <P>&nbsp;</p>
+            <hr>
+            <h1 name="DOCS">The Docs</h1>
+            <h4>How to use this tool.</h4>
+            <P>This calculator can perform batch calcuations of magmatic liquid density for thousands of samples at once. You can do this in three easy steps:
+                <ol>
+                    <li>Prepare your input file</li>
+                    <li>Upload your input file above</li>
+                    <li>Examine your data in the generated output file</li>
+                </ol>
+            <h3>1. Prepare your input file</h3>
+            <P>For batch calculations, an input file with the oxide compositions, P, and T of each sample must be prepared by the user. The file test-data.xlsx is included with the program and serves as a template for an input file. Although this file can have any name, it must follow the structure of test-data.xlsx, with columns named as follows (with composition in wt%, pressure in bars, and T in °C): Sample_ID, SiO2, TiO2, Al2O3, Fe2O3, FeO, MgO, CaO, K2O, H2O, P, T. The order of the columns does not matter, as the program locates data columns in the input file based on the column name given in the first row of the file.</p>
+            <P>The input file must be an excel spreadsheet with the file extension ".xlsx"</p>
+            <P>[image of test-data.xlsx]</p>
+            <P>[button to download test-data.xlsx]</p>
+            <h3>2. Upload your input file</h3>
+            <p>blah</p>
+            <h3>3. Examine the output file</h3>
+            <P>blah</p>
+            <hr>
+            <h1>Code repository</h1>
+            <p>This code is deployed using heroku, but you can access the same code on github: <a href="https://github.com/kaylai/DensityX-heroku" target="_blank">https://github.com/kaylai/DensityX-heroku</a>. Special thanks to David Rynearson for his help in deploying this web app.
+            <hr>
+            <h1>Having trouble?</h1>
+            <P>This code is maintained by Kayla Iacovino. <a href="mailto:kayla.iacovino@asu.edu">Email her</a> if you have questions or are having trouble using this tool.
+            <hr>
         </div>
     </div>
 </div>
