@@ -14,8 +14,8 @@ import xlsxwriter
 from xlsxwriter.workbook import Workbook
 from io import BytesIO
 
-#from Flask import Flask, render
-
+def readthedocs(request): #this allows the code to render the readthedocs.html file
+    return render(request, 'core/readthedocs.html')
 
 def home(request):
     documents = Document.objects.all()
@@ -33,19 +33,6 @@ def simple_upload(request):
         xlsx = process_file(myfile.name)
         return xlsx
     return render(request, 'core/home.html')
-
-
-# def model_form_upload(request):
-#     if request.method == 'POST':
-#         form = DocumentForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home')
-#     else:
-#         form = DocumentForm()
-#     return render(request, 'core/model_form_upload.html', {
-#         'form': form
-#     })
 
 
 def process_file(file_handle):

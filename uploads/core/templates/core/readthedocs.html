@@ -1,38 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>DensityX Calculator</title>
+{% extends 'base.html' %}
 
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Density-CalcX</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="inactive"><a href="/">Home</a></li>
-            <li class="active"><a href="readthedocs.html">The Docs</a></li>
-        </ul>
-    </div>
-</nav>
-
+{% load static %}
 
 {% block content %}
+
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 name="DOCS">The Docs</h1>
+            <h4>How to use this tool.</h4>
+            <P>This calculator can perform batch calcuations of magmatic liquid density for thousands of samples at once. You can do this in three easy steps:
+                <ol>
+                    <li>Prepare your input file</li>
+                    <li>Upload your input file above</li>
+                    <li>Examine your data in the generated output file</li>
+                </ol>
+            <h3>1. Prepare your input file</h3>
+            <P>For batch calculations, an input file with the oxide compositions, P, and T of each sample must be prepared by the user. The file test-data.xlsx is included with the program and serves as a template for an input file. Although this file can have any name, it must follow the structure of test-data.xlsx, with columns named as follows (with composition in wt%, pressure in bars, and T in °C): Sample_ID, SiO2, TiO2, Al2O3, Fe2O3, FeO, MgO, CaO, K2O, H2O, P, T. The order of the columns does not matter, as the program locates data columns in the input file based on the column name given in the first row of the file.</p>
+            <P>The input file must be an excel spreadsheet with the file extension ".xlsx"</p>
+            <P><img src="{% static "img/test-data-picture.png" %}" alt="Test Data Picture"/></p>
+            <P>[button to download test-data.xlsx]</p>
+            <h3>2. Upload your input file</h3>
+            <p>blah</p>
+            <h3>3. Examine the output file</h3>
+            <P>blah</p>
+            <hr>
+            <h1>Code repository</h1>
+            <p>This code is deployed using heroku, but you can access the same code on github: <a href="https://github.com/kaylai/DensityX-heroku" target="_blank">https://github.com/kaylai/DensityX-heroku</a>. Special thanks to David Rynearson for his help in deploying this web app.
+            <hr>
+            <h1>Having trouble?</h1>
+            <P>This code is maintained by Kayla Iacovino. <a href="mailto:kayla.iacovino@asu.edu">Email her</a> if you have questions or are having trouble using this tool.
+            <hr>
+        </div>
+    </div>
+</div>
+
+{% if uploaded_file_url %}
+<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+<p>Also print another thing if a file is uploaded</p>
+{% endif %}
+
 {% endblock %}
-</body>
-</html>
