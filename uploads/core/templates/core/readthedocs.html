@@ -19,12 +19,12 @@
             <h3>1. Prepare your input file</h3>
             <P>For batch calculations, an input file with the oxide compositions, P, and T of each sample must be prepared by the user. The file test-data.xlsx is included with the program and serves as a template for an input file. Although this file can have any name, it must follow the structure of test-data.xlsx, with columns named as follows (with composition in wt%, pressure in bars, and T in °C): Sample_ID, SiO2, TiO2, Al2O3, Fe2O3, FeO, MgO, CaO, K2O, H2O, P, T. The order of the columns does not matter, as the program locates data columns in the input file based on the column name given in the first row of the file.</p>
             <P>The input file must be an excel spreadsheet with the file extension ".xlsx"</p>
+            <P>Download the <a href="{% static "img/test-data.xlsx" %}">test-data.xlsx</a> file (pictured below) for an example.
             <P><img src="{% static "img/test-data-picture.png" %}" alt="Test Data Picture"/></p>
-            <P>[button to download test-data.xlsx]</p>
             <h3>2. Upload your input file</h3>
-            <p>blah</p>
+            <p>Upload your input excel file to the online interface located on the home page. Upon clicking "Submit", the code with execute on heroku's servers, and a new file titled "DensityX-result.xlsx" will be downloaded to your computer. Check your downloads folder if you can't find it.</p>
             <h3>3. Examine the output file</h3>
-            <P>blah</p>
+            <P>The output file is an excel spreadsheet with two sheets. The first contains the most important data you are after: the calculated densities of all samples, their associated errors, and some values associated with those samples to help you recognize which is which (sample name, SiO2 and H2O concentrations). The second sheet, "All Data", contains all calculations performed on your input data, inlcuding normalized wt% values for oxide concentrations.</p>
             <hr>
             <h1>Code repository</h1>
             <p>This code is deployed using heroku, but you can access the same code on github: <a href="https://github.com/kaylai/DensityX-heroku" target="_blank">https://github.com/kaylai/DensityX-heroku</a>. Special thanks to David Rynearson for his help in deploying this web app.
