@@ -383,7 +383,7 @@ def process_file(file_handle):
 
     #Make a sheet with only the important output data
     index = data["Sample_ID"]
-    columns = [data["Sample_ID"], norm_WP_SiO2, data["FeO"], norm_WP_H2O, data["T"], data["P"], data["Density_g-per-cm3"], data["Uncertainty_g_per_cm3"], data["Density_g-per-L"], data["Uncertainty_g_per_L"]]
+    columns = [data["Sample_ID"], data["SiO2"], data["H2O"], data["T"], data["P"], data["Density_g-per-cm3"], data["Uncertainty_g_per_cm3"], data["Density_g-per-L"], data["Uncertainty_g_per_L"]]
     output = pandas.DataFrame(index, columns)
 
     excel_file = BytesIO()
@@ -393,7 +393,7 @@ def process_file(file_handle):
     output.to_excel(xlwriter, sheet_name='Density Data')
     data.to_excel(xlwriter, sheet_name='All Data') #Convert the dataframe to an XlsxWriter Excel object
     xlwriter.save()
-    xlwriter.close()
+    #xlwriter.close()
 
     excel_file.seek(0)
 
