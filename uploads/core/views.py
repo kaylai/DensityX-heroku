@@ -301,8 +301,8 @@ def process_file(file_handle):
 
 
     #Calculate the density of the melt in g/cm3 and in g/L
-    data["Density_g-per-cm3"]   = data["XMW_Sum"] / data["VliqSum"]
-    data["Density_g-per-L"]     = data["Density_g-per-cm3"] * 1000
+    data["Density_g_per_cm3"]   = data["XMW_Sum"] / data["VliqSum"]
+    data["Density_g_per_L"]     = data["Density_g_per_cm3"] * 1000
 
     #Translate oxide column values back into wt% for the output spreadsheet
     data.loc[:,'SiO2']  = norm_WP_SiO2
