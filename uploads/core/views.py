@@ -389,12 +389,12 @@ def process_file(file_handle):
 
     #Make a sheet with only the important output data
     index = data["Sample_ID"]
-    columns = [data["Sample_ID"], data["SiO2"], data["H2O"], data["T"], data["P"], data["Density_g-per-cm3"], data["Uncertainty_g_per_cm3"], data["Density_g-per-L"], data["Uncertainty_g_per_L"]]
+    columns = [data["Sample_ID"], data["SiO2_(Normalized)"], data["H2O_(Normalized)"], data["T"], data["P"], data["Density_g_per_cm3"], data["Uncertainty_g_per_cm3"], data["Density_g_per_L"], data["Uncertainty_g_per_L"]]
     output = pandas.DataFrame(index, columns)
 
     #Make a sheet with original user input data
     index = data["Sample_ID"]
-    columns = [data["Sample_ID"], orig_WP_SiO2, orig_WP_TiO2, orig_WP_Al2O3, orig_WP_Fe2O3, orig_WP_FeO, orig_WP_MgO, orig_WP_CaO, orig_WP_Na2O, orig_WP_K2O, orig_WP_H2O, data["T"], data["P"]]
+    columns = [data["Sample_ID"], data["SiO2 (User Input)"], orig_WP_TiO2, orig_WP_Al2O3, orig_WP_Fe2O3, orig_WP_FeO, orig_WP_MgO, orig_WP_CaO, orig_WP_Na2O, orig_WP_K2O, orig_WP_H2O, data["OriginalSum"], data["T"], data["P"]]
     original_user_data = pandas.DataFrame(index, columns)
 
     #Make a sheet with normalized user data
