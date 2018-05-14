@@ -56,6 +56,9 @@ def process_file(file_handle):
     orig_WP_K2O     = data["K2O"]
     orig_WP_H2O     = data["H2O"]
 
+    #also save SiO2 in duplicate to avoid corruption
+    data["SiO2 (User Input)"] = orig_WP_SiO2
+
     #Molecular Weights
     MW_SiO2     = 60.0855
     MW_TiO2     = 79.88
@@ -192,6 +195,9 @@ def process_file(file_handle):
     norm_WP_K2O     = data["K2O"]
     norm_WP_H2O     = data["H2O"]
 
+    #Save Normed SiO2 in duplicate to avoid corruption on excel output
+    data["SiO2_(Normalized)"] = norm_WP_SiO2
+    data["H2O_(Normalized)"] = norm_WP_H2O
 
     #divide normalized wt% values by molecular weights
     data.loc[:,'SiO2']  /= MW_SiO2
@@ -386,12 +392,24 @@ def process_file(file_handle):
     columns = [data["Sample_ID"], data["SiO2"], data["H2O"], data["T"], data["P"], data["Density_g-per-cm3"], data["Uncertainty_g_per_cm3"], data["Density_g-per-L"], data["Uncertainty_g_per_L"]]
     output = pandas.DataFrame(index, columns)
 
+    #Make a sheet with original user input data
+    index = data["Sample_ID"]
+    columns = [data["Sample_ID"], orig_WP_SiO2, orig_WP_TiO2, orig_WP_Al2O3, orig_WP_Fe2O3, orig_WP_FeO, orig_WP_MgO, orig_WP_CaO, orig_WP_Na2O, orig_WP_K2O, orig_WP_H2O, data["T"], data["P"]]
+    original_user_data = pandas.DataFrame(index, columns)
+
+    #Make a sheet with normalized user data
+    index = data["Sample_ID"]
+    columns = [data["Sample_ID"], data["SiO2_(Normalized)"], norm_WP_TiO2, norm_WP_Al2O3, norm_WP_Fe2O3, norm_WP_FeO, norm_WP_MgO, norm_WP_CaO, norm_WP_Na2O, norm_WP_K2O, norm_WP_H2O, data["T"], data["P"]]
+    normed_user_data = pandas.DataFrame(index, columns)
+
     excel_file = BytesIO()
 
     xlwriter = pandas.ExcelWriter(excel_file, engine='xlsxwriter')
 
     output.to_excel(xlwriter, sheet_name='Density Data')
-    data.to_excel(xlwriter, sheet_name='All Data') #Convert the dataframe to an XlsxWriter Excel object
+    original_user_data.to_excel(xlwriter, sheet_name='User Input')
+    normed_user_data.to_excel(xlwriter, sheet_name='Normalized Data')
+    #NOTE there is an option in the downloadable DensityX.py file (github) to switch on debugging, which writes all calculated values to excel file. This is not implemented in the online (Heroku) version.
     xlwriter.save()
     #xlwriter.close()
 
