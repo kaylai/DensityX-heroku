@@ -29,7 +29,7 @@ If you are having issues getting this to run, your 5000 port may be busy. Kill a
 $ kill `lsof -i :5000`
 ```
 
-##Push changes and deploy on Heroku.
+## Push changes and deploy on Heroku.
 ```sh
 $ git add .
 $ git commit -m "commit message"
@@ -44,14 +44,14 @@ $ git commit -m "commit message"
 $ git push origin master
 ```
 
-##The file structure
+## The file structure
 The file /uploads/core/view.py is where your python code (the actual code being deployed, in this case DensityX.py) lives.
 
 The file /uploads/templates/base.html is the base html file that is essentially your index.html file. All other html files extend base.
 
 The file /uploads/core/templates/core/home.html is where the stuff on your index page is defined. For example, the upload button in DensityX is defined here.
 
-##Some files you'll need
+## Some files you'll need
 Use python-getting-started from heroku for an example of a working setup with all required files (readme for original is below)
 
 requirements.txt file - all dependencies and versions go here. To get version: run python, import module, type:
