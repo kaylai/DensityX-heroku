@@ -4,7 +4,12 @@ This app was created on top of python-getting-started. The readme for the origin
 
 ## Test on your local.
 
-Create a virtual environment to test the app on your local machine.
+Create a virtual environment to test the app on your local machine. If you've never created a virtual environment called 'venv' before, run:
+```sh
+$ conda create virtualenv -n venv
+```
+
+Then:
 
 ```sh
 $ conda env export -n venv
@@ -113,7 +118,7 @@ For more information about using Python on Heroku, see these Dev Center articles
 
 ## David's setup notes (macOS)
 
-###In local Machine
+### In local Machine
 ```
 git clone https://github.com/kaylai/DensityX-heroku.git
 cd DensityX-heroku
@@ -124,7 +129,7 @@ source activate venv
 heroku local web
 ```
 
-###In Venv Machine
+### In Venv Machine
 ```
 pip install -r requirements.txt
 python manage.py collectstatic
