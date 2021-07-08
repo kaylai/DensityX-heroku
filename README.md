@@ -35,6 +35,7 @@ $ kill `lsof -i :5000`
 ```
 
 ## Push changes and deploy on Heroku.
+NOTE: This app currently has webhooks setup so that you do not need to push to heroku. If pushed to github, Heroku app will automatically rebuild and redeploy. In other words, skip this step...
 ```sh
 $ git add .
 $ git commit -m "commit message"
