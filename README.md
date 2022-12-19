@@ -98,6 +98,11 @@ $ heroku local
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
+Note if you get an error of DisallowedHost, you will need to add localhost to uploads/settings.py:
+```python
+ALLOWED_HOSTS = ['someapp.herokuapp.com', 'localhost']
+```
+
 ## Deploying to Heroku
 
 ```sh
