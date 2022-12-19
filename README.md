@@ -34,6 +34,11 @@ If you are having issues getting this to run, your 5000 port may be busy. Kill a
 $ kill `lsof -i :5000`
 ```
 
+Note if you get an error of DisallowedHost, you will need to add localhost to uploads/settings.py:
+```python
+ALLOWED_HOSTS = ['someapp.herokuapp.com', 'localhost']
+```
+
 ## Push changes and deploy on Heroku.
 NOTE: This app currently has webhooks setup so that you do not need to push to heroku. If pushed to github, Heroku app will automatically rebuild and redeploy. In other words, skip this step...
 ```sh
@@ -97,11 +102,6 @@ $ heroku local
 ```
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-Note if you get an error of DisallowedHost, you will need to add localhost to uploads/settings.py:
-```python
-ALLOWED_HOSTS = ['someapp.herokuapp.com', 'localhost']
-```
 
 ## Deploying to Heroku
 
