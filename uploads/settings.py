@@ -26,7 +26,8 @@ SECRET_KEY = 'e#-^aknk(5k)ej6rh#h$i(%h(m9)-j*lwrc_1dxnk=a@-mixlt'
 DEBUG = True
 
 ALLOWED_HOSTS = ['densityx.herokuapp.com',
-                 'densityx-test-heroku-22.herokuapp.com']
+                 'densityx-test-heroku-22.herokuapp.com',
+                 'localhost']
 
 
 # Application definition
